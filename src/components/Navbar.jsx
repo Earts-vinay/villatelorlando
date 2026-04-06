@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import moment from "moment";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -27,8 +27,13 @@ export default function Navbar() {
 
   const handleLogout = () => {
     handleClose();
-    navigate("/"); 
+    navigate("/");
   };
+
+  const navLinks = [
+    { label: "Map", path: "/map" },
+    { label: "Insights", path: "/insights" },
+  ];
 
   return (
     <AppBar
@@ -41,12 +46,39 @@ export default function Navbar() {
       }}
     >
       <Toolbar sx={{ justifyContent: "space-between" }}>
+        
         {/* LOGO */}
         <img
           src="/assets/images/Villatel_logo.png"
           alt="logo"
-          style={{ width: "180px" }}
+          style={{ width: "180px", cursor: "pointer" }}
+          onClick={() => navigate("/map")}
         />
+
+        {/* NAV LINKS */}
+        <Box sx={{ display: "flex", gap: 4 }}>
+          {navLinks.map((item) => (
+            <NavLink
+              key={item.label}
+              to={item.path}
+              style={{ textDecoration: "none",cursor:"pointer" }}
+            >
+              {({ isActive }) => (
+                <Typography
+                  sx={{
+                    fontSize: "14px",
+                    fontFamily: "montserrat-regular",
+                    fontWeight: isActive ? 700 : 500, // active bold
+                    color: "#001426",
+                    cursor: "pointer",
+                  }}
+                >
+                  {item.label}
+                </Typography>
+              )}
+            </NavLink>
+          ))}
+        </Box>
 
         {/* RIGHT SECTION */}
         <Box sx={{ textAlign: "right" }}>
@@ -74,6 +106,7 @@ export default function Navbar() {
               <KeyboardArrowDownIcon sx={{ fontSize: 18 }} />
             </IconButton>
           </Box>
+
           <Typography
             sx={{
               fontSize: "12px",

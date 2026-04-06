@@ -1,6 +1,6 @@
 import React from "react";
 import { Modal, Box, Typography, IconButton } from "@mui/material";
-import CloseIcon from "@mui/icons-material/Close";
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 
 export default function ImageModal({ open, setOpen, img }) {
     return (
@@ -57,7 +57,7 @@ export default function ImageModal({ open, setOpen, img }) {
                             "&:hover": { background: "#095c80" },
                         }}
                     >
-                        <CloseIcon sx={{ fontSize: 16 }} />
+                        <CloseOutlinedIcon sx={{ fontSize: 16 }} />
                     </IconButton>
                 </Box>
 
