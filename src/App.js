@@ -15,6 +15,7 @@ import Navbar from "./components/Navbar";
 
 import "./App.css";
 import Map from "./pages/Map";
+import { Typography } from "@mui/material";
 
 function Layout() {
   const location = useLocation();
@@ -45,6 +46,26 @@ function Layout() {
         <Route path="/map" element={<Map />} />
         <Route path="/insights" element={<Insights />} />
       </Routes>
+
+      {!shouldHideNavbar && <Typography
+        component="a"
+        href="https://www.blue-bird.ai/"
+        target="_blank"
+        rel="noopener noreferrer"
+        sx={{
+          display: "block",
+          textAlign: "center",
+          fontSize: "11px",
+          mb: 2,
+          fontFamily: "montserrat-regular",
+          color: "#587A9C",
+          textDecoration: "none",
+          cursor: "pointer",
+        }}
+      >
+        ©Copyright 2026, Bluebird AI Inc.
+      </Typography>}
+
     </>
   );
 }
